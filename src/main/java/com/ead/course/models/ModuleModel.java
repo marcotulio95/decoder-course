@@ -21,6 +21,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
+import static com.ead.course.utils.DateUtils.DEFAULT_DATE_PATTERN;
+
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "TB_MODULES")
@@ -36,10 +38,10 @@ public class ModuleModel implements Serializable {
     @Column(nullable = false, length = 250)
     private String description;
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DEFAULT_DATE_PATTERN)
     private LocalDateTime creationTime;
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DEFAULT_DATE_PATTERN)
     private LocalDateTime lastUpdateTime;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

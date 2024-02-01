@@ -16,6 +16,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static com.ead.course.utils.DateUtils.DEFAULT_DATE_PATTERN;
+
 @Data
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -33,9 +35,9 @@ public class LessonModel implements Serializable {
     @Column(nullable = false, length = 250)
     private String videoUrl;
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DEFAULT_DATE_PATTERN)
     private LocalDateTime creationTime;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DEFAULT_DATE_PATTERN)
     private LocalDateTime lastUpdateTime;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(optional = false)
